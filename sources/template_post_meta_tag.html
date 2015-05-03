@@ -1,0 +1,50 @@
+---
+layout: default
+title: tag_template
+footer: false
+sidebar: true
+
+tag_template_post_tag: true
+tag_template_post_loc: true
+tag_template_post_年代: true
+tag_template_post_people: true
+category_template_post_category: true
+
+#title_prefix
+#permalink
+#output_dir
+#paginate
+
+render: true
+paginate: 50
+---
+<div class="resource-container">
+  <h1 class="template-title">${page.title}</h1>
+  <div class="resource-dq-box">
+    <ul>
+      <#list paginator.items as post>
+        <li>
+          <div class="resource-dq-item">
+            <a href="${root_url}${post.url}"><#if post.img_url??><img src="${site.snapshot_path}${post.img_url}"><#else><img src="${root_url}/images/logo.png"></#if></a>
+          </div>
+          <strong class="f14"><a href="${root_url}${post.url}">《${post.cn_name}》</a></strong><br>
+					<#assign singleHolder = post.tagsHolder.singleHolder>
+					<#if singleHolder.年代??><#assign yearTag = singleHolder.年代></#if>
+					<#if singleHolder.loc??><#assign locTag = singleHolder.loc></#if>
+					<#t/>
+                    <#if yearTag??><a href="${root_url}${yearTag.url}">${yearTag.name}</a></#if> <#if locTag??><a href="${root_url}${locTag.url}">${locTag.name}</a></#if><br>
+                    [<#assign tn = 0><#list post.tags as tag><#if tn == 1>/</#if><a class="tag" href="${root_url}${tag.url}">${tag.name}</a><#assign tn = 1></#list>]<br>
+        </li>
+      </#list>
+    </ul>
+    <div class="clearfix"></div>
+  </div>
+
+  <div class="pagination">
+      <#-- new page bar -->
+      <#include "index/pagination.ftl">
+  </div>
+</div>
+<aside class="sidebar">
+  <#include "default_asides_content.html">
+</aside>

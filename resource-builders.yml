@@ -1,0 +1,13 @@
+- {type: compass, path: ".", config: "config.rb"}
+- type: js
+  input: [origin/javascripts/libs/modernizr.min.js, origin/javascripts/libs/jquery.min.js,
+             origin/javascripts/opoopress.js, origin/javascripts/libs/swfobject-modified.min.js]
+  output: 'assets/javascripts/opoopress.min.js'
+- {type: js, input: "origin/javascripts/html5shiv.min.js", output: "assets/javascripts/html5shiv.min.js"}
+- {type: js, input: "origin/javascripts/twitter.js", output: "assets/javascripts/twitter.min.js"}
+- {type: js, input: "origin/javascripts/unsupported-browser.js", output: "assets/javascripts/unsupported-browser.js", merge-only: true}
+- {type: js, input: "origin/javascripts/pinboard.js", output: "assets/javascripts/pinboard.min.js"}
+
+# - {type: com.opoopress.theme.YourCustomBuilder, var1: value1, var2: value2}
+# - {type: js, input: origin/js/base.js, output: assets/javascripts/base.min.js}
+# - {type: css, input: ["origin/css/css1.css", "origin/css/css2.css"], output: "assets/css/css.css", merge-only: false}
